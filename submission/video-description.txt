@@ -1,0 +1,9 @@
+TurnProof — evidence-first voice-agent regression lab
+Nebius × NVIDIA Global AI Hackathon / Best Apps and Agents
+
+Demo: https://widechaos.github.io/turnproof/
+Source (MIT): https://github.com/widechaos/turnproof
+
+Narrated walkthrough of actual application states after interacting with the software. Includes deterministic event checks, evidence selection, matching control comparison, measured audio replay, and recorded NVIDIA Nemotron inference on Nebius Token Factory.
+
+All supplied audio and event fixtures are synthetic. The offline reference agent has intentionally injected faults. File-based processing times are not streaming barge-in latency. NVIDIA results are recorded, not live calls in this video. No human trials or production accuracy claims. Narration is locally generated synthetic speech.
