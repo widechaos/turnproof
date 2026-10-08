@@ -1,0 +1,712 @@
+{
+  "traces": [
+    {
+      "id": "synthetic-interruption-001",
+      "source": "synthetic_event_fixture",
+      "expectations": {
+        "interrupt_stop_budget_ms": 250,
+        "max_tool_calls": {
+          "save_booking": 1
+        }
+      },
+      "events": [
+        {
+          "id": "a1",
+          "time_ms": 0,
+          "type": "assistant_audio_start"
+        },
+        {
+          "id": "u1",
+          "time_ms": 1000,
+          "type": "user_interrupt",
+          "text": "Wait, change the date."
+        },
+        {
+          "id": "a2",
+          "time_ms": 1700,
+          "type": "assistant_audio_stop"
+        },
+        {
+          "id": "t1",
+          "time_ms": 1800,
+          "type": "tool_call",
+          "name": "save_booking"
+        },
+        {
+          "id": "t2",
+          "time_ms": 1850,
+          "type": "tool_call",
+          "name": "save_booking"
+        }
+      ]
+    },
+    {
+      "id": "synthetic-interruption-002",
+      "source": "synthetic_event_fixture",
+      "expectations": {
+        "interrupt_stop_budget_ms": 250,
+        "max_tool_calls": {
+          "save_booking": 1
+        }
+      },
+      "events": [
+        {
+          "id": "a1",
+          "time_ms": 0,
+          "type": "assistant_audio_start"
+        },
+        {
+          "id": "u1",
+          "time_ms": 1000,
+          "type": "user_interrupt",
+          "text": "Wait, change the date."
+        },
+        {
+          "id": "a2",
+          "time_ms": 1150,
+          "type": "assistant_audio_stop"
+        },
+        {
+          "id": "t1",
+          "time_ms": 1800,
+          "type": "tool_call",
+          "name": "save_booking"
+        }
+      ]
+    }
+  ],
+  "reports": [
+    {
+      "trace_id": "synthetic-interruption-001",
+      "source": "synthetic_event_fixture",
+      "deterministic_pass": false,
+      "findings": [
+        {
+          "code": "slow_interrupt_stop",
+          "value_ms": 700,
+          "evidence": [
+            "u1",
+            "a2"
+          ]
+        },
+        {
+          "code": "excess_tool_calls",
+          "tool": "save_booking",
+          "count": 2,
+          "evidence": [
+            "t1",
+            "t2"
+          ]
+        }
+      ],
+      "semantic_evaluation": "not_run",
+      "audio_pipeline": "not_tested",
+      "interrupt_stops": [
+        {
+          "delay_ms": 700,
+          "evidence": [
+            "u1",
+            "a2"
+          ]
+        }
+      ],
+      "tool_calls": {
+        "save_booking": 2
+      },
+      "events": [
+        {
+          "id": "a1",
+          "time_ms": 0,
+          "type": "assistant_audio_start"
+        },
+        {
+          "id": "u1",
+          "time_ms": 1000,
+          "type": "user_interrupt",
+          "text": "Wait, change the date."
+        },
+        {
+          "id": "a2",
+          "time_ms": 1700,
+          "type": "assistant_audio_stop"
+        },
+        {
+          "id": "t1",
+          "time_ms": 1800,
+          "type": "tool_call",
+          "name": "save_booking"
+        },
+        {
+          "id": "t2",
+          "time_ms": 1850,
+          "type": "tool_call",
+          "name": "save_booking"
+        }
+      ]
+    },
+    {
+      "trace_id": "synthetic-interruption-002",
+      "source": "synthetic_event_fixture",
+      "deterministic_pass": true,
+      "findings": [],
+      "semantic_evaluation": "not_run",
+      "audio_pipeline": "not_tested",
+      "interrupt_stops": [
+        {
+          "delay_ms": 150,
+          "evidence": [
+            "u1",
+            "a2"
+          ]
+        }
+      ],
+      "tool_calls": {
+        "save_booking": 1
+      },
+      "events": [
+        {
+          "id": "a1",
+          "time_ms": 0,
+          "type": "assistant_audio_start"
+        },
+        {
+          "id": "u1",
+          "time_ms": 1000,
+          "type": "user_interrupt",
+          "text": "Wait, change the date."
+        },
+        {
+          "id": "a2",
+          "time_ms": 1150,
+          "type": "assistant_audio_stop"
+        },
+        {
+          "id": "t1",
+          "time_ms": 1800,
+          "type": "tool_call",
+          "name": "save_booking"
+        }
+      ]
+    }
+  ],
+  "comparison": {
+    "scope": "deterministic_event_comparison",
+    "source": "synthetic_event_fixture",
+    "human_validation": "not_established",
+    "semantic_evaluation": "not_run",
+    "before": {
+      "trace_id": "synthetic-interruption-001",
+      "source": "synthetic_event_fixture",
+      "deterministic_pass": false,
+      "findings": [
+        {
+          "code": "slow_interrupt_stop",
+          "value_ms": 700,
+          "evidence": [
+            "u1",
+            "a2"
+          ]
+        },
+        {
+          "code": "excess_tool_calls",
+          "tool": "save_booking",
+          "count": 2,
+          "evidence": [
+            "t1",
+            "t2"
+          ]
+        }
+      ],
+      "semantic_evaluation": "not_run",
+      "audio_pipeline": "not_tested",
+      "interrupt_stops": [
+        {
+          "delay_ms": 700,
+          "evidence": [
+            "u1",
+            "a2"
+          ]
+        }
+      ],
+      "tool_calls": {
+        "save_booking": 2
+      }
+    },
+    "after": {
+      "trace_id": "synthetic-interruption-002",
+      "source": "synthetic_event_fixture",
+      "deterministic_pass": true,
+      "findings": [],
+      "semantic_evaluation": "not_run",
+      "audio_pipeline": "not_tested",
+      "interrupt_stops": [
+        {
+          "delay_ms": 150,
+          "evidence": [
+            "u1",
+            "a2"
+          ]
+        }
+      ],
+      "tool_calls": {
+        "save_booking": 1
+      }
+    },
+    "finding_count_change": -2
+  },
+  "cloud_history": [
+    {
+      "fixture": "slow",
+      "recorded_on": "2026-10-09",
+      "provider": "nebius_token_factory",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "latency_ms": 892,
+      "usage": {
+        "completion_tokens": 78,
+        "prompt_tokens": 346,
+        "total_tokens": 424,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": null
+      },
+      "free_batch": {
+        "reserved_calls": 2,
+        "reserved_usd": 0.002
+      },
+      "status": "completed",
+      "diagnosis": {
+        "verdict": "fail",
+        "findings": [
+          {
+            "reason": "interrupt_stop_budget_ms exceeded",
+            "evidence": [
+              "a2",
+              "u1"
+            ]
+          },
+          {
+            "reason": "max_tool_calls exceeded",
+            "evidence": [
+              "t1",
+              "t2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fixture": "normal",
+      "recorded_on": "2026-10-09",
+      "provider": "nebius_token_factory",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "latency_ms": 843,
+      "usage": {
+        "completion_tokens": 17,
+        "prompt_tokens": 314,
+        "total_tokens": 331,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": null
+      },
+      "free_batch": {
+        "reserved_calls": 1,
+        "reserved_usd": 0.001
+      },
+      "status": "completed",
+      "diagnosis": {
+        "verdict": "pass",
+        "findings": []
+      }
+    },
+    {
+      "fixture": "cancel-none",
+      "recorded_on": "2026-10-09",
+      "provider": "nebius_token_factory",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "latency_ms": 569,
+      "usage": {
+        "completion_tokens": 17,
+        "prompt_tokens": 448,
+        "total_tokens": 465,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": null
+      },
+      "free_batch": {
+        "reserved_calls": 1,
+        "reserved_usd": 0.001
+      },
+      "status": "completed",
+      "diagnosis": {
+        "verdict": "pass",
+        "findings": []
+      }
+    },
+    {
+      "fixture": "cancel-ignore_cancel",
+      "recorded_on": "2026-10-09",
+      "provider": "nebius_token_factory",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "latency_ms": 1502,
+      "usage": {
+        "completion_tokens": 86,
+        "prompt_tokens": 262,
+        "total_tokens": 348,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": null
+      },
+      "free_batch": {
+        "reserved_calls": 1,
+        "reserved_usd": 0.001
+      },
+      "evaluation_scope": "semantic_intent_only",
+      "status": "completed",
+      "diagnosis": {
+        "verdict": "fail",
+        "findings": [
+          {
+            "check": "task_intent",
+            "reason": "The user explicitly requests to cancel without saving any booking, but the agent saves the booking for Thursday, directly contradicting the intent.",
+            "evidence": [
+              "e2",
+              "e3",
+              "e4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fixture": "change-date-wrong_date",
+      "recorded_on": "2026-10-09",
+      "provider": "nebius_token_factory",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "latency_ms": 910,
+      "usage": {
+        "completion_tokens": 83,
+        "prompt_tokens": 270,
+        "total_tokens": 353,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": null
+      },
+      "free_batch": {
+        "reserved_calls": 2,
+        "reserved_usd": 0.002
+      },
+      "evaluation_scope": "semantic_intent_only",
+      "status": "completed",
+      "diagnosis": {
+        "verdict": "fail",
+        "findings": [
+          {
+            "check": "task_intent",
+            "reason": "The user explicitly instructed to save the booking for Friday and not Thursday, but the agent saved Thursday and confirmed it.",
+            "evidence": [
+              "e2",
+              "e3",
+              "e4"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "audio_replays": [
+    {
+      "trace": {
+        "id": "change-date-none",
+        "source": "synthetic_voice",
+        "expectations": {
+          "interrupt_stop_budget_ms": 250,
+          "max_tool_calls": {
+            "save_booking": 1
+          },
+          "required_tool_arguments": {
+            "save_booking": {
+              "date": "Friday"
+            }
+          },
+          "semantic_goal": "Save the booking for Friday, never Thursday."
+        },
+        "events": [
+          {
+            "id": "e1",
+            "time_ms": 0,
+            "type": "input_audio_loaded",
+            "sha256": "065db6563a68df4e177e355bcc8c21dbdcc1f5f6e43cc4e159c81b2e4e85146c"
+          },
+          {
+            "id": "e2",
+            "time_ms": 698,
+            "type": "user_transcript",
+            "text": "Wait, change the booking to Friday. Do not save Thursday."
+          },
+          {
+            "id": "e3",
+            "time_ms": 698,
+            "type": "tool_call",
+            "name": "save_booking",
+            "arguments": {
+              "date": "Friday"
+            }
+          },
+          {
+            "id": "e4",
+            "time_ms": 698,
+            "type": "assistant_text",
+            "text": "Your booking is saved for Friday."
+          },
+          {
+            "id": "e5",
+            "time_ms": 2790,
+            "type": "response_audio_written",
+            "file": "change-date-none-response.wav"
+          }
+        ],
+        "provenance": {
+          "agent": "offline_reference_booking_agent",
+          "fault_mode": "none",
+          "audio_pipeline": "file_asr_agent_tts",
+          "streaming_barge_in": "not_tested",
+          "human_trial": false
+        }
+      },
+      "report": {
+        "trace_id": "change-date-none",
+        "source": "synthetic_voice",
+        "deterministic_pass": true,
+        "findings": [],
+        "semantic_evaluation": "not_run",
+        "audio_pipeline": "file_asr_agent_tts"
+      },
+      "test_bookings": [
+        {
+          "date": "Friday"
+        }
+      ],
+      "response": "Your booking is saved for Friday.",
+      "processing_ms": 2790
+    },
+    {
+      "trace": {
+        "id": "change-date-wrong_date",
+        "source": "synthetic_voice",
+        "expectations": {
+          "interrupt_stop_budget_ms": 250,
+          "max_tool_calls": {
+            "save_booking": 1
+          },
+          "required_tool_arguments": {
+            "save_booking": {
+              "date": "Friday"
+            }
+          },
+          "semantic_goal": "Save the booking for Friday, never Thursday."
+        },
+        "events": [
+          {
+            "id": "e1",
+            "time_ms": 0,
+            "type": "input_audio_loaded",
+            "sha256": "065db6563a68df4e177e355bcc8c21dbdcc1f5f6e43cc4e159c81b2e4e85146c"
+          },
+          {
+            "id": "e2",
+            "time_ms": 367,
+            "type": "user_transcript",
+            "text": "Wait, change the booking to Friday. Do not save Thursday."
+          },
+          {
+            "id": "e3",
+            "time_ms": 368,
+            "type": "tool_call",
+            "name": "save_booking",
+            "arguments": {
+              "date": "Thursday"
+            }
+          },
+          {
+            "id": "e4",
+            "time_ms": 368,
+            "type": "assistant_text",
+            "text": "Your booking is saved for Thursday."
+          },
+          {
+            "id": "e5",
+            "time_ms": 1749,
+            "type": "response_audio_written",
+            "file": "change-date-wrong_date-response.wav"
+          }
+        ],
+        "provenance": {
+          "agent": "offline_reference_booking_agent",
+          "fault_mode": "wrong_date",
+          "audio_pipeline": "file_asr_agent_tts",
+          "streaming_barge_in": "not_tested",
+          "human_trial": false
+        }
+      },
+      "report": {
+        "trace_id": "change-date-wrong_date",
+        "source": "synthetic_voice",
+        "deterministic_pass": false,
+        "findings": [
+          {
+            "code": "wrong_tool_argument",
+            "tool": "save_booking",
+            "argument": "date",
+            "expected": "Friday",
+            "actual": "Thursday",
+            "evidence": [
+              "e3"
+            ]
+          }
+        ],
+        "semantic_evaluation": "not_run",
+        "audio_pipeline": "file_asr_agent_tts"
+      },
+      "test_bookings": [
+        {
+          "date": "Thursday"
+        }
+      ],
+      "response": "Your booking is saved for Thursday.",
+      "processing_ms": 1749
+    },
+    {
+      "trace": {
+        "id": "cancel-none",
+        "source": "synthetic_voice",
+        "expectations": {
+          "interrupt_stop_budget_ms": 250,
+          "max_tool_calls": {
+            "save_booking": 0
+          },
+          "required_tool_arguments": {},
+          "semantic_goal": "Cancel without saving any booking."
+        },
+        "events": [
+          {
+            "id": "e1",
+            "time_ms": 0,
+            "type": "input_audio_loaded",
+            "sha256": "5dee6d32aa72e88b5cc0ced2fd399bca24977d2214ad3f183ff29ba6c1f4c5eb"
+          },
+          {
+            "id": "e2",
+            "time_ms": 269,
+            "type": "user_transcript",
+            "text": "Cancel that do not make any booking."
+          },
+          {
+            "id": "e3",
+            "time_ms": 269,
+            "type": "assistant_text",
+            "text": "Cancelled. No booking was made."
+          },
+          {
+            "id": "e4",
+            "time_ms": 1563,
+            "type": "response_audio_written",
+            "file": "cancel-none-response.wav"
+          }
+        ],
+        "provenance": {
+          "agent": "offline_reference_booking_agent",
+          "fault_mode": "none",
+          "audio_pipeline": "file_asr_agent_tts",
+          "streaming_barge_in": "not_tested",
+          "human_trial": false
+        }
+      },
+      "report": {
+        "trace_id": "cancel-none",
+        "source": "synthetic_voice",
+        "deterministic_pass": true,
+        "findings": [],
+        "semantic_evaluation": "not_run",
+        "audio_pipeline": "file_asr_agent_tts"
+      },
+      "test_bookings": [],
+      "response": "Cancelled. No booking was made.",
+      "processing_ms": 1563
+    },
+    {
+      "trace": {
+        "id": "cancel-ignore_cancel",
+        "source": "synthetic_voice",
+        "expectations": {
+          "interrupt_stop_budget_ms": 250,
+          "max_tool_calls": {
+            "save_booking": 0
+          },
+          "required_tool_arguments": {},
+          "semantic_goal": "Cancel without saving any booking."
+        },
+        "events": [
+          {
+            "id": "e1",
+            "time_ms": 0,
+            "type": "input_audio_loaded",
+            "sha256": "5dee6d32aa72e88b5cc0ced2fd399bca24977d2214ad3f183ff29ba6c1f4c5eb"
+          },
+          {
+            "id": "e2",
+            "time_ms": 380,
+            "type": "user_transcript",
+            "text": "Cancel that do not make any booking."
+          },
+          {
+            "id": "e3",
+            "time_ms": 380,
+            "type": "tool_call",
+            "name": "save_booking",
+            "arguments": {
+              "date": "Thursday"
+            }
+          },
+          {
+            "id": "e4",
+            "time_ms": 380,
+            "type": "assistant_text",
+            "text": "I saved your booking for Thursday."
+          },
+          {
+            "id": "e5",
+            "time_ms": 1706,
+            "type": "response_audio_written",
+            "file": "cancel-ignore_cancel-response.wav"
+          }
+        ],
+        "provenance": {
+          "agent": "offline_reference_booking_agent",
+          "fault_mode": "ignore_cancel",
+          "audio_pipeline": "file_asr_agent_tts",
+          "streaming_barge_in": "not_tested",
+          "human_trial": false
+        }
+      },
+      "report": {
+        "trace_id": "cancel-ignore_cancel",
+        "source": "synthetic_voice",
+        "deterministic_pass": false,
+        "findings": [
+          {
+            "code": "excess_tool_calls",
+            "tool": "save_booking",
+            "count": 1,
+            "evidence": [
+              "e3"
+            ]
+          }
+        ],
+        "semantic_evaluation": "not_run",
+        "audio_pipeline": "file_asr_agent_tts"
+      },
+      "test_bookings": [
+        {
+          "date": "Thursday"
+        }
+      ],
+      "response": "I saved your booking for Thursday.",
+      "processing_ms": 1706
+    }
+  ]
+}

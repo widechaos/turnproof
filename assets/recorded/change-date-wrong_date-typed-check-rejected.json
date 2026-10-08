@@ -1,0 +1,20 @@
+{
+  "provider": "nebius_token_factory",
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "latency_ms": 2116,
+  "usage": {
+    "completion_tokens": 260,
+    "prompt_tokens": 614,
+    "total_tokens": 874,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  },
+  "free_batch": {
+    "reserved_calls": 2,
+    "reserved_usd": 0.002
+  },
+  "status": "invalid_model_output",
+  "validation_error": "Interruption finding has no measured over-budget event pair",
+  "untrusted_model_output": "{\n  \"verdict\": \"fail\",\n  \"findings\": [\n    {\n      \"check\": \"interruption_latency\",\n      \"reason\": \"User interrupt occurred at e2 (367ms) but no assistant_audio_stop event is present; therefore interruption latency cannot be measured and does not meet the 250ms budget.\",\n      \"evidence\": [\"e2\"]\n    },\n    {\n      \"check\": \"tool_count\",\n      \"reason\": \"save_booking was called with incorrect argument 'date': 'Thursday' instead of the required 'Friday'.\",\n      \"evidence\": [\"e3\"]\n    },\n    {\n      \"check\": \"tool_argument\",\n      \"reason\": \"The tool_call at e3 uses argument 'date': 'Thursday' which violates the required argument 'date': 'Friday'.\",\n      \"evidence\": [\"e3\"]\n    },\n    {\n      \"check\": \"task_intent\",\n      \"reason\": \"User explicitly requested to change the booking to Friday and to not save Thursday, but the conflicting action 'save_booking' was executed with 'Thursday' as the date, directly contradicting the user's intent.\",\n      \"evidence\": [\"e2\", \"e3\"]\n    }\n  ]\n}",
+  "recorded_on": "2026-10-09"
+}

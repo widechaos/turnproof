@@ -1,0 +1,32 @@
+{
+  "provider": "nebius_token_factory",
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "latency_ms": 1502,
+  "usage": {
+    "completion_tokens": 86,
+    "prompt_tokens": 262,
+    "total_tokens": 348,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  },
+  "free_batch": {
+    "reserved_calls": 1,
+    "reserved_usd": 0.001
+  },
+  "evaluation_scope": "semantic_intent_only",
+  "status": "completed",
+  "diagnosis": {
+    "verdict": "fail",
+    "findings": [
+      {
+        "check": "task_intent",
+        "reason": "The user explicitly requests to cancel without saving any booking, but the agent saves the booking for Thursday, directly contradicting the intent.",
+        "evidence": [
+          "e2",
+          "e3",
+          "e4"
+        ]
+      }
+    ]
+  }
+}

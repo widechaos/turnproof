@@ -1,0 +1,37 @@
+{
+  "provider": "nebius_token_factory",
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "latency_ms": 892,
+  "usage": {
+    "completion_tokens": 78,
+    "prompt_tokens": 346,
+    "total_tokens": 424,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  },
+  "free_batch": {
+    "reserved_calls": 2,
+    "reserved_usd": 0.002
+  },
+  "status": "completed",
+  "diagnosis": {
+    "verdict": "fail",
+    "findings": [
+      {
+        "reason": "interrupt_stop_budget_ms exceeded",
+        "evidence": [
+          "a2",
+          "u1"
+        ]
+      },
+      {
+        "reason": "max_tool_calls exceeded",
+        "evidence": [
+          "t1",
+          "t2"
+        ]
+      }
+    ]
+  },
+  "recorded_on": "2026-10-09"
+}

@@ -1,0 +1,32 @@
+{
+  "provider": "nebius_token_factory",
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "latency_ms": 910,
+  "usage": {
+    "completion_tokens": 83,
+    "prompt_tokens": 270,
+    "total_tokens": 353,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  },
+  "free_batch": {
+    "reserved_calls": 2,
+    "reserved_usd": 0.002
+  },
+  "evaluation_scope": "semantic_intent_only",
+  "status": "completed",
+  "diagnosis": {
+    "verdict": "fail",
+    "findings": [
+      {
+        "check": "task_intent",
+        "reason": "The user explicitly instructed to save the booking for Friday and not Thursday, but the agent saved Thursday and confirmed it.",
+        "evidence": [
+          "e2",
+          "e3",
+          "e4"
+        ]
+      }
+    ]
+  }
+}

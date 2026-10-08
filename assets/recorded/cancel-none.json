@@ -1,0 +1,45 @@
+{
+  "id": "cancel-none",
+  "source": "synthetic_voice",
+  "expectations": {
+    "interrupt_stop_budget_ms": 250,
+    "max_tool_calls": {
+      "save_booking": 0
+    },
+    "required_tool_arguments": {},
+    "semantic_goal": "Cancel without saving any booking."
+  },
+  "events": [
+    {
+      "id": "e1",
+      "time_ms": 0,
+      "type": "input_audio_loaded",
+      "sha256": "5dee6d32aa72e88b5cc0ced2fd399bca24977d2214ad3f183ff29ba6c1f4c5eb"
+    },
+    {
+      "id": "e2",
+      "time_ms": 269,
+      "type": "user_transcript",
+      "text": "Cancel that do not make any booking."
+    },
+    {
+      "id": "e3",
+      "time_ms": 269,
+      "type": "assistant_text",
+      "text": "Cancelled. No booking was made."
+    },
+    {
+      "id": "e4",
+      "time_ms": 1563,
+      "type": "response_audio_written",
+      "file": "cancel-none-response.wav"
+    }
+  ],
+  "provenance": {
+    "agent": "offline_reference_booking_agent",
+    "fault_mode": "none",
+    "audio_pipeline": "file_asr_agent_tts",
+    "streaming_barge_in": "not_tested",
+    "human_trial": false
+  }
+}

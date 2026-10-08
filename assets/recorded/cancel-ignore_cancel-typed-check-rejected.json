@@ -1,0 +1,20 @@
+{
+  "provider": "nebius_token_factory",
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "latency_ms": 1577,
+  "usage": {
+    "completion_tokens": 236,
+    "prompt_tokens": 593,
+    "total_tokens": 829,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  },
+  "free_batch": {
+    "reserved_calls": 1,
+    "reserved_usd": 0.001
+  },
+  "status": "invalid_model_output",
+  "validation_error": "Interruption finding has no measured over-budget event pair",
+  "untrusted_model_output": "{\n  \"verdict\": \"fail\",\n  \"findings\": [\n    {\n      \"check\": \"interruption_latency\",\n      \"reason\": \"User interrupt occurred at e2 (380ms) but no assistant_audio_stop event is present in the trace, so interruption latency cannot be measured and the check is not applicable.\",\n      \"evidence\": [\n        \"e2\"\n      ]\n    },\n    {\n      \"check\": \"tool_count\",\n      \"reason\": \"The tool_call event e3 invokes save_booking, which violates the expectation of zero tool calls (max_tool_calls: {\\\"save_booking\\\": 0}). This is a violation of the explicit expectation.\",\n      \"evidence\": [\n        \"e3\"\n      ]\n    },\n    {\n      \"check\": \"task_intent\",\n      \"reason\": \"The user's transcript at e2 explicitly requests cancellation of any booking, but the assistant's response at e4 confirms a booking was saved, directly contradicting the user's intent.\",\n      \"evidence\": [\n        \"e2\",\n        \"e4\"\n      ]\n    }\n  ]\n}",
+  "recorded_on": "2026-10-09"
+}

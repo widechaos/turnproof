@@ -1,0 +1,58 @@
+{
+  "id": "change-date-none",
+  "source": "synthetic_voice",
+  "expectations": {
+    "interrupt_stop_budget_ms": 250,
+    "max_tool_calls": {
+      "save_booking": 1
+    },
+    "required_tool_arguments": {
+      "save_booking": {
+        "date": "Friday"
+      }
+    },
+    "semantic_goal": "Save the booking for Friday, never Thursday."
+  },
+  "events": [
+    {
+      "id": "e1",
+      "time_ms": 0,
+      "type": "input_audio_loaded",
+      "sha256": "065db6563a68df4e177e355bcc8c21dbdcc1f5f6e43cc4e159c81b2e4e85146c"
+    },
+    {
+      "id": "e2",
+      "time_ms": 698,
+      "type": "user_transcript",
+      "text": "Wait, change the booking to Friday. Do not save Thursday."
+    },
+    {
+      "id": "e3",
+      "time_ms": 698,
+      "type": "tool_call",
+      "name": "save_booking",
+      "arguments": {
+        "date": "Friday"
+      }
+    },
+    {
+      "id": "e4",
+      "time_ms": 698,
+      "type": "assistant_text",
+      "text": "Your booking is saved for Friday."
+    },
+    {
+      "id": "e5",
+      "time_ms": 2790,
+      "type": "response_audio_written",
+      "file": "change-date-none-response.wav"
+    }
+  ],
+  "provenance": {
+    "agent": "offline_reference_booking_agent",
+    "fault_mode": "none",
+    "audio_pipeline": "file_asr_agent_tts",
+    "streaming_barge_in": "not_tested",
+    "human_trial": false
+  }
+}

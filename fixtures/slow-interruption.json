@@ -1,0 +1,11 @@
+{
+  "id": "synthetic-interruption-001", "source": "synthetic_event_fixture",
+  "expectations": {"interrupt_stop_budget_ms": 250, "max_tool_calls": {"save_booking": 1}},
+  "events": [
+    {"id":"a1","time_ms":0,"type":"assistant_audio_start"},
+    {"id":"u1","time_ms":1000,"type":"user_interrupt","text":"Wait, change the date."},
+    {"id":"a2","time_ms":1700,"type":"assistant_audio_stop"},
+    {"id":"t1","time_ms":1800,"type":"tool_call","name":"save_booking"},
+    {"id":"t2","time_ms":1850,"type":"tool_call","name":"save_booking"}
+  ]
+}
