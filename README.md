@@ -2,6 +2,8 @@
 
 **Catch the turn that broke—with event evidence.**
 
+![TurnProof](assets/cover.png)
+
 [Try the interactive demo](https://widechaos.github.io/turnproof/) · [Recorded test collection](assets/recorded)
 
 TurnProof is an evidence-first regression lab for voice agents, built for the Nebius × NVIDIA Global AI Hackathon. It separates measurable rules from semantic judgment: deterministic code checks interruption stops, action counts and required tool arguments; NVIDIA Nemotron on Nebius checks whether an action contradicts the user's intent.
